@@ -389,4 +389,251 @@
 
       <div class="status-banner error" id="formErrorBanner"></div>
 
-      <div class="confirmation-box" id="confirmation
+      <div class="confirmation-box" id="confirmationBox">
+        <h2>¡Gracias por disponer tu talento para Dios!</h2>
+        <p id="confirmationText">
+          Hemos recibido tu información de contacto. Nuestro equipo de coordinación se comunicará contigo para consultar fechas y programar tu participación.
+        </p>
+        <div class="actions-row">
+          <button type="button" class="btn-secondary" id="btnCopyRow">Copiar fila para Excel / Sheets</button>
+          <button type="button" class="btn-secondary" id="btnDownloadCsv">Descargar CSV</button>
+          <button type="button" class="btn-secondary" id="btnNewEntry">Registrar otro participante</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="footer">
+      <strong>Iglesia Adventista de Palermo — Bogotá</strong><br />
+      Ministerio de Alabanza y Adoración (Palermo Worship)
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // REEMPLAZA ESTA LÍNEA CON LA URL /exec DE TU GOOGLE APPS SCRIPT
+    // =========================================================================
+    const APPS_SCRIPT_EXEC_URL = 'PEGA_AQUI_TU_URL_DE_APPS_SCRIPT_EXEC';
+
+    const form = document.getElementById('registroForm');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const errorBanner = document.getElementById('formErrorBanner');
+    const confirmationBox = document.getElementById('confirmationBox');
+    const confirmationText = document.getElementById('confirmationText');
+
+    let lastSubmittedRecord = null;
+
+    function setError(fieldId, message) {
+      const el = document.getElementById('err-' + fieldId);
+      if (el) el.textContent = message;
+    }
+
+    function clearErrors() {
+      document.querySelectorAll('.error-msg').forEach((el) => (el.textContent = ''));
+      errorBanner.style.display = 'none';
+      errorBanner.textContent = '';
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validateForm() {
+      clearErrors();
+      let valid = true;
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const confirmCorreo = document.getElementById('confirmacion_correo').value.trim();
+      const numeroTel = document.getElementById('numero_telefonico').value.trim();
+      const agrupacion = document.getElementById('agrupacion_o_cantante').value.trim();
+      const ciudad = document.getElementById('ciudad_residencia').value.trim();
+      const integrantes = document.getElementById('numero_integrantes').value.trim();
+
+      if (!nombre) {
+        setError('nombre', 'Por favor ingresa tu nombre.');
+        valid = false;
+      }
+
+      if (!telefono) {
+        setError('telefono', 'Por favor ingresa un número de teléfono.');
+        valid = false;
+      }
+
+      if (!correo || !isValidEmail(correo)) {
+        setError('correo', 'Ingresa un correo electrónico válido.');
+        valid = false;
+      }
+
+      if (!confirmCorreo) {
+        setError('confirmacion_correo', 'Por favor confirma tu correo electrónico.');
+        valid = false;
+      } else if (correo.toLowerCase() !== confirmCorreo.toLowerCase()) {
+        setError('confirmacion_correo', 'Los correos electrónicos no coinciden.');
+        valid = false;
+      }
+
+      if (numeroTel && numeroTel.replace(/\D/g, '').length < 7) {
+        setError('numero_telefonico', 'Verifica el número telefónico ingresado.');
+        valid = false;
+      }
+
+      if (!agrupacion) {
+        setError('agrupacion_o_cantante', 'Indica el nombre de la agrupación o cantante.');
+        valid = false;
+      }
+
+      if (!ciudad) {
+        setError('ciudad_residencia', 'Indica tu ciudad de residencia.');
+        valid = false;
+      }
+
+      if (integrantes && (Number(integrantes) < 1 || !Number.isInteger(Number(integrantes)))) {
+        setError('numero_integrantes', 'Ingresa un número entero válido (ej. 1, 3, 5).');
+        valid = false;
+      }
+
+      if (!valid) {
+        errorBanner.textContent = 'Por favor revisa los campos resaltados antes de enviar.';
+        errorBanner.style.display = 'block';
+      }
+
+      return valid;
+    }
+
+    async function sendToGoogleSheets(payload) {
+      if (!APPS_SCRIPT_EXEC_URL || APPS_SCRIPT_EXEC_URL.includes('https://script.google.com/macros/s/AKfycbxGDCOsOcafgeTL9_TBvxZ3cqNQsec7JoFsC9IBRhamN7RxHsrPzOxCSce-DT8ioRmd5Q/exec')) {
+        return { sent: false, reason: 'URL /exec pendiente de configurar' };
+      }
+
+      await fetch(APPS_SCRIPT_EXEC_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      return { sent: true };
+    }
+
+    function recordToTsv(rec) {
+      const cols = [
+        rec.fecha_registro,
+        rec.nombre,
+        rec.telefono,
+        rec.correo,
+        rec.confirmacion_correo,
+        rec.numero_telefonico,
+        rec.agrupacion_o_cantante,
+        rec.ciudad_residencia,
+        rec.numero_integrantes,
+        rec.fechas_disponibles
+      ];
+      return cols.map((v) => String(v || '').replace(/\t|\r?\n/g, ' ')).join('\t');
+    }
+
+    function recordToCsv(rec) {
+      const headers = [
+        'Fecha de registro',
+        'Nombre',
+        'Teléfono',
+        'Correo electrónico',
+        'Confirmación del correo',
+        'Número telefónico',
+        'Nombre de la agrupación o cantante',
+        'Ciudad de residencia',
+        'Número de integrantes (si aplica)',
+        'Fechas disponibles'
+      ];
+      const vals = [
+        rec.fecha_registro,
+        rec.nombre,
+        rec.telefono,
+        rec.correo,
+        rec.confirmacion_correo,
+        rec.numero_telefonico,
+        rec.agrupacion_o_cantante,
+        rec.ciudad_residencia,
+        rec.numero_integrantes,
+        rec.fechas_disponibles
+      ];
+      const esc = (s) => `"${String(s || '').replace(/"/g, '""')}"`;
+      return headers.map(esc).join(',') + '\n' + vals.map(esc).join(',');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Enviando registro...';
+
+      const payload = {
+        fecha_registro: new Date().toLocaleString('es-CO'),
+        nombre: document.getElementById('nombre').value.trim(),
+        telefono: document.getElementById('telefono').value.trim(),
+        correo: document.getElementById('correo').value.trim(),
+        confirmacion_correo: document.getElementById('confirmacion_correo').value.trim(),
+        numero_telefonico: document.getElementById('numero_telefonico').value.trim(),
+        agrupacion_o_cantante: document.getElementById('agrupacion_o_cantante').value.trim(),
+        ciudad_residencia: document.getElementById('ciudad_residencia').value.trim(),
+        numero_integrantes: document.getElementById('numero_integrantes').value.trim(),
+        fechas_disponibles: document.getElementById('fechas_disponibles').value.trim()
+      };
+
+      lastSubmittedRecord = payload;
+
+      try {
+        const result = await sendToGoogleSheets(payload);
+        confirmationBox.classList.add('visible');
+
+        if (result.sent) {
+          confirmationText.textContent =
+            'Tu registro fue enviado a nuestra hoja de coordinación de la Iglesia Adventista de Palermo. Pronto nos pondremos en contacto para revisar fechas contigo.';
+        } else {
+          confirmationText.textContent =
+            'Registro validado localmente. Recuerda reemplazar APPS_SCRIPT_EXEC_URL en el archivo index.html para que llegue automáticamente a tu Google Sheets.';
+        }
+        confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (err) {
+        errorBanner.textContent = 'Ocurrió un inconveniente al intentar enviar. Puedes copiar la fila o descargar el CSV desde aquí.';
+        errorBanner.style.display = 'block';
+        confirmationBox.classList.add('visible');
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Enviar registro y disponibilidad';
+      }
+    });
+
+    document.getElementById('btnCopyRow').addEventListener('click', async () => {
+      if (!lastSubmittedRecord) return;
+      const tsv = recordToTsv(lastSubmittedRecord);
+      try {
+        await navigator.clipboard.writeText(tsv);
+        alert('Fila copiada. Ya puedes pegarla directamente en Excel o Google Sheets.');
+      } catch (_) {
+        prompt('Copia esta fila:', tsv);
+      }
+    });
+
+    document.getElementById('btnDownloadCsv').addEventListener('click', () => {
+      if (!lastSubmittedRecord) return;
+      const blob = new Blob(['\uFEFF' + recordToCsv(lastSubmittedRecord)], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'registro_palermo_worship.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('btnNewEntry').addEventListener('click', () => {
+      form.reset();
+      clearErrors();
+      confirmationBox.classList.remove('visible');
+      lastSubmittedRecord = null;
+      document.getElementById('nombre').focus();
+    });
+  </script>
+</body>
+</html>
