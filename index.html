@@ -3,759 +3,390 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro Especiales de Alabanza | Iglesia Adventista de Palermo - Bogotá</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Cinzel/Playfair para toques solemnes y cálidos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
-
+  <title>Registro Especiales de Alabanza — Iglesia Adventista de Palermo</title>
   <style>
-    /* Configuración de paleta institucional y efectos cálidos */
     :root {
-      --bg-espresso: #231712;
-      --bg-terracotta: #3B2418;
-      --gold-primary: #D4A359;
-      --gold-bright: #E6B86A;
-      --gold-dark: #9A6E2A;
-      --teal-inst: #134E5E;
-      --teal-light: #1B5E6B;
+      --bg-dark: #160E0A;
+      --bg-card: #2A1B14;
+      --bg-input: #1C120D;
+      --accent-gold: #D4A359;
+      --accent-gold-light: #F4CE88;
+      --teal-header: #134E5E;
+      --text-main: #F9F5F0;
+      --text-muted: #D5C5B2;
+      --border-gold: rgba(212, 163, 89, 0.45);
+      --error-red: #FF6B6B;
+      --success-green: #4ADE80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 18% 12%, rgba(230, 184, 106, 0.22) 0%, transparent 32%),
-                  radial-gradient(circle at 85% 18%, rgba(212, 163, 89, 0.18) 0%, transparent 28%),
-                  radial-gradient(circle at 50% 88%, rgba(27, 94, 107, 0.28) 0%, transparent 45%),
-                  linear-gradient(160deg, #1E130F 0%, #3B2418 48%, #231712 100%);
-      background-attachment: fixed;
-      color: #F9F5F0;
+      background: radial-gradient(circle at top, #3B2418 0%, #1A110D 55%, #110A07 100%);
+      color: var(--text-main);
+      font-family: 'Segoe UI', Roboto, Arial, Helvetica, sans-serif;
       min-height: 100vh;
+      padding: 24px 14px 48px;
+      line-height: 1.5;
     }
 
-    /* Partículas Bokeh decorativas en el fondo */
-    .bokeh-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border: 2px solid var(--accent-gold);
+      border-radius: 22px;
       overflow: hidden;
-      z-index: 0;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
     }
 
-    .bokeh-dot {
-      position: absolute;
-      border-radius: 9999px;
-      background: radial-gradient(circle, rgba(246, 211, 145, 0.45) 0%, rgba(212, 163, 89, 0.08) 65%, transparent 100%);
-      filter: blur(6px);
-      animation: floatBokeh 14s ease-in-out infinite alternate;
+    .top-banner {
+      background-color: var(--teal-header);
+      padding: 16px 24px;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-gold);
     }
 
-    @keyframes floatBokeh {
-      0% { transform: translateY(0px) scale(1); opacity: 0.45; }
-      100% { transform: translateY(-22px) scale(1.12); opacity: 0.8; }
+    .top-banner .church {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
     }
 
-    /* Tarjeta principal estilo pergamino oscuro translúcido */
-    .glass-sanctuary {
-      background: linear-gradient(180deg, rgba(28, 19, 15, 0.86) 0%, rgba(35, 23, 18, 0.92) 100%);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(212, 163, 89, 0.42);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(230, 184, 106, 0.25);
+    .top-banner .sub {
+      font-size: 12px;
+      color: #FFFFFF;
+      margin-top: 2px;
+      opacity: 0.92;
     }
 
-    /* Encabezado institucional verde petróleo con arco dorado */
-    .header-teal-banner {
-      background: linear-gradient(135deg, #0F3E4B 0%, #134E5E 50%, #1B5E6B 100%);
-      border-bottom: 2px solid #D4A359;
+    .hero {
+      padding: 28px 28px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(212, 163, 89, 0.12) 0%, rgba(42, 27, 20, 0) 100%);
+      border-bottom: 1px solid var(--border-gold);
     }
 
-    /* Inputs elegantes con borde dorado */
-    .input-gold {
-      background-color: rgba(18, 12, 9, 0.72);
-      border: 1.5px solid rgba(212, 163, 89, 0.48);
-      color: #FFFDF9;
-      transition: all 0.25s ease;
+    .badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      background-color: var(--bg-input);
+      border: 1px solid var(--accent-gold);
+      margin-bottom: 14px;
     }
 
-    .input-gold::placeholder {
-      color: rgba(235, 221, 204, 0.45);
+    h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
     }
 
-    .input-gold:focus {
+    .subtitle {
+      font-size: 15px;
+      color: #FFFFFF;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .spiritual-note {
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .spiritual-note strong {
+      color: var(--accent-gold-light);
+    }
+
+    .verse {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--accent-gold);
+      text-align: center;
+    }
+
+    form {
+      padding: 26px 28px 32px;
+    }
+
+    .field-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      margin-bottom: 7px;
+    }
+
+    .req {
+      color: var(--error-red);
+      margin-left: 2px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border-gold);
+      background-color: var(--bg-input);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #8F7E6B;
+    }
+
+    input:focus,
+    textarea:focus {
       outline: none;
-      border-color: #E6B86A;
-      background-color: rgba(24, 16, 12, 0.92);
-      box-shadow: 0 0 0 3px rgba(230, 184, 106, 0.22);
+      border-color: var(--accent-gold-light);
+      box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.22);
     }
 
-    .input-gold.input-error {
-      border-color: #F87171;
-      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.18);
+    textarea {
+      min-height: 82px;
+      resize: vertical;
     }
 
-    /* Botón degradado dorado */
-    .btn-gold {
-      background: linear-gradient(135deg, #B88335 0%, #E6B86A 50%, #C6903E 100%);
-      color: #1D120B;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
-      box-shadow: 0 10px 25px rgba(212, 163, 89, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    .btn-gold:hover {
-      transform: translateY(-2px);
+    @media (max-width: 580px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      form,
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+
+    .error-msg {
+      color: var(--error-red);
+      font-size: 12.5px;
+      margin-top: 5px;
+      min-height: 18px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 16px 24px;
+      border: 1px solid var(--accent-gold-light);
+      border-radius: 13px;
+      background: linear-gradient(180deg, #E3B66B 0%, #C79344 100%);
+      color: #1A100A;
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+
+    .btn-submit:hover:not(:disabled) {
       filter: brightness(1.06);
-      box-shadow: 0 14px 32px rgba(230, 184, 106, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      transform: translateY(-1px);
     }
 
-    .btn-gold:active {
-      transform: translateY(0px);
+    .btn-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
     }
 
-    .font-serif-accent {
-      font-family: 'Playfair Display', serif;
+    .status-banner {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      display: none;
+    }
+
+    .status-banner.error {
+      display: block;
+      background-color: rgba(255, 107, 107, 0.14);
+      border: 1px solid var(--error-red);
+      color: #FFD2D2;
+    }
+
+    .confirmation-box {
+      display: none;
+      margin-top: 22px;
+      background-color: var(--bg-input);
+      border: 1.5px solid var(--success-green);
+      border-radius: 16px;
+      padding: 22px 20px;
+    }
+
+    .confirmation-box.visible {
+      display: block;
+    }
+
+    .confirmation-box h2 {
+      color: var(--success-green);
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .confirmation-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn-secondary {
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid var(--accent-gold);
+      background-color: #2A1B14;
+      color: var(--accent-gold-light);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: #3B2418;
+    }
+
+    .footer {
+      background-color: var(--bg-dark);
+      padding: 16px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border-gold);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer strong {
+      color: var(--accent-gold-light);
     }
   </style>
 </head>
-<body class="relative antialiased selection:bg-[#D4A359] selection:text-[#1E130F]">
-
-  <!-- Capa de destellos Bokeh dorados -->
-  <div class="bokeh-layer" aria-hidden="true">
-    <div class="bokeh-dot w-28 h-28 top-6 left-[8%]" style="animation-delay: 0s;"></div>
-    <div class="bokeh-dot w-20 h-20 top-14 left-[26%]" style="animation-delay: 2s;"></div>
-    <div class="bokeh-dot w-36 h-36 top-4 right-[12%]" style="animation-delay: 1s;"></div>
-    <div class="bokeh-dot w-24 h-24 top-28 right-[32%]" style="animation-delay: 3.5s;"></div>
-    <div class="bokeh-dot w-40 h-40 bottom-16 left-[10%]" style="animation-delay: 4s;"></div>
-    <div class="bokeh-dot w-32 h-32 bottom-24 right-[15%]" style="animation-delay: 1.5s;"></div>
-  </div>
-
-  <!-- Contenedor principal -->
-  <main class="relative z-10 max-w-2xl mx-auto px-4 py-6 sm:py-10">
-
-    <!-- Tarjeta Principal -->
-    <div class="glass-sanctuary rounded-3xl overflow-hidden">
-
-      <!-- Encabezado Institucional (Verde Petróleo + Emblemas Blanco/Dorado) -->
-      <header class="header-teal-banner px-6 py-5 sm:px-8">
-        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <!-- Emblema Iglesia Adventista del Séptimo Día -->
-          <div class="flex items-center gap-2.5">
-            <svg class="w-9 h-9 text-white shrink-0" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Iglesia Adventista del Séptimo Día">
-              <!-- Biblia abierta -->
-              <path d="M8 48C16 44 25 45 31 49V54C25 50 16 49 8 53V48Z" fill="currentColor"/>
-              <path d="M56 48C48 44 39 45 33 49V54C39 50 48 49 56 53V48Z" fill="currentColor"/>
-              <!-- Cruz central -->
-              <path d="M32 34V53M26 41H38" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-              <!-- Llamas estilizadas -->
-              <path d="M25 36C21 29 22 20 31 11C28 20 29 27 32 32C29 33 27 34 25 36Z" fill="currentColor"/>
-              <path d="M34 33C33 26 36 19 43 14C39 21 39 27 41 32C38 32 36 32 34 33Z" fill="currentColor"/>
-              <path d="M21 38C18 33 18 26 24 19C22 26 23 31 25 35C23 36 22 37 21 38Z" fill="currentColor" opacity="0.85"/>
-            </svg>
-            <div class="leading-tight text-left">
-              <span class="block text-xs sm:text-sm font-semibold tracking-wide text-white">Iglesia Adventista</span>
-              <span class="block text-xs sm:text-sm font-light tracking-wide text-white/95">del Séptimo Día</span>
-            </div>
-          </div>
-
-          <!-- Medallón Central Dorado -->
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-[#F2C97D] to-[#D49334] flex items-center justify-center shadow-lg border border-white/40 shrink-0">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 47C18 43 26 44 31 48V52C26 48 18 47 10 51V47Z" fill="currentColor"/>
-              <path d="M54 47C46 43 38 44 33 48V52C38 48 46 47 54 51V47Z" fill="currentColor"/>
-              <path d="M32 35V51M27 41H37" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
-              <path d="M26 36C22 29 23 20 32 11C29 20 30 27 32 32" fill="currentColor"/>
-              <path d="M34 33C33 26 36 19 43 14C39 21 39 27 41 32" fill="currentColor"/>
-            </svg>
-          </div>
-
-          <!-- Emblema Palermo Worship (Teclas de Piano) -->
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg border border-white/80 p-1 flex items-end justify-between bg-black/20 shrink-0" aria-label="Logo Palermo Worship">
-              <span class="w-1.5 h-full bg-white rounded-xs"></span>
-              <span class="w-1.5 h-4/6 bg-white/40 rounded-xs"></span>
-              <span class="w-1.5 h-full bg-white rounded-xs"></span>
-              <span class="w-1.5 h-4/6 bg-white/40 rounded-xs"></span>
-              <span class="w-1.5 h-full bg-white rounded-xs"></span>
-            </div>
-            <div class="leading-tight text-left">
-              <span class="block text-xs sm:text-sm font-semibold tracking-wide text-white">Palermo</span>
-              <span class="block text-xs sm:text-sm font-light tracking-wide text-white/95">Worship</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Sección Hero / Invitación Espiritual -->
-      <section class="px-6 pt-7 pb-5 sm:px-10 text-center border-b border-[#D4A359]/25 bg-gradient-to-b from-[#3B2418]/55 to-transparent">
-        <span class="inline-block px-3.5 py-1 mb-3 text-[11px] font-semibold tracking-widest uppercase rounded-full bg-[#D4A359]/15 text-[#E6B86A] border border-[#D4A359]/35">
-          Programación de Adoración Musical
-        </span>
-
-        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#E6B86A] drop-shadow-sm uppercase leading-tight">
-          ¡Queremos contar con tu talento!
-        </h1>
-
-        <p class="mt-2.5 text-base sm:text-lg font-medium text-white leading-snug">
-          Invitación a participar en nuestros Especiales de Alabanza y Adoración
-        </p>
-        <p class="mt-1 text-sm font-semibold text-[#D4A359]">
-          Iglesia Adventista de Palermo — Bogotá
-        </p>
-
-        <!-- Mensaje Cálido y Espiritual -->
-        <div class="mt-5 p-4 sm:p-5 rounded-2xl bg-[#18100C]/65 border border-[#D4A359]/30 text-left sm:text-center">
-          <p class="text-sm sm:text-[15px] text-[#F4ECE1] leading-relaxed">
-            Querido(a) hermano(a), reconocemos que cada voz y cada instrumento son dones puestos por Dios para tocar corazones y elevar nuestra adoración. Queremos invitarte a ser parte activa de nuestros momentos especiales de alabanza.
-          </p>
-          <p class="mt-2.5 text-sm sm:text-[15px] text-[#E6B86A] font-medium leading-relaxed">
-            Por favor compártenos tus datos a continuación; estaremos revisando nuestra agenda con mucho cariño y te contactaremos para consultar las fechas en las que puedas acompañarnos.
-          </p>
-          <p class="mt-3 font-serif-accent italic text-xs sm:text-sm text-[#D4A359]/90">
-            “Cantad al Señor cántico nuevo; cantad al Señor, toda la tierra.” — Salmo 96:1
-          </p>
-        </div>
-      </section>
-
-      <!-- Contenedor del Formulario -->
-      <section id="form-section" class="px-6 py-7 sm:px-10">
-        <!-- Alerta de validación general -->
-        <div id="form-alert" class="hidden mb-6 p-4 rounded-xl bg-red-950/80 border border-red-400/50 text-red-200 text-sm flex items-start gap-3" role="alert">
-          <svg class="w-5 h-5 text-red-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-          </svg>
-          <span id="form-alert-text">Por favor verifica los campos marcados en rojo antes de enviar tu registro.</span>
-        </div>
-
-        <form id="worship-form" novalidate class="space-y-5">
-
-          <!-- 1. Nombre -->
-          <div>
-            <label for="nombre" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-              1. Nombre completo <span class="text-[#E6B86A]">*</span>
-            </label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              required
-              placeholder="Ej. Andrés David Orozco"
-              class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-            />
-            <p class="error-msg hidden mt-1 text-xs text-red-400">Por favor ingresa tu nombre completo.</p>
-          </div>
-
-          <!-- 2. Teléfono / WhatsApp -->
-          <div>
-            <label for="telefono" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-              2. Teléfono / WhatsApp principal <span class="text-[#E6B86A]">*</span>
-            </label>
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              required
-              placeholder="Ej. 310 346 2044"
-              class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-            />
-            <p class="error-msg hidden mt-1 text-xs text-red-400">Ingresa un número de teléfono o WhatsApp válido.</p>
-          </div>
-
-          <!-- 3 & 4. Correo electrónico y Confirmación del correo -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="correo" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-                3. Correo electrónico <span class="text-[#E6B86A]">*</span>
-              </label>
-              <input
-                type="email"
-                id="correo"
-                name="correo"
-                required
-                placeholder="tucorreo@ejemplo.com"
-                class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-              />
-              <p class="error-msg hidden mt-1 text-xs text-red-400">Ingresa un correo electrónico válido.</p>
-            </div>
-
-            <div>
-              <label for="confirmarCorreo" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-                4. Confirmación del correo <span class="text-[#E6B86A]">*</span>
-              </label>
-              <input
-                type="email"
-                id="confirmarCorreo"
-                name="confirmarCorreo"
-                required
-                placeholder="Repite tu correo electrónico"
-                class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-              />
-              <p id="email-match-error" class="error-msg hidden mt-1 text-xs text-red-400">Los correos electrónicos no coinciden.</p>
-            </div>
-          </div>
-
-          <!-- 5. Número telefónico alterno -->
-          <div>
-            <label for="telefonoAlterno" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-              5. Número telefónico alterno <span class="text-xs font-normal text-[#D4A359]/80">(Opcional)</span>
-            </label>
-            <input
-              type="tel"
-              id="telefonoAlterno"
-              name="telefonoAlterno"
-              placeholder="Teléfono secundario o de otro integrante"
-              class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-            />
-          </div>
-
-          <!-- 6. Nombre de la agrupación o cantante -->
-          <div>
-            <label for="agrupacion" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-              6. Nombre de la agrupación o cantante <span class="text-[#E6B86A]">*</span>
-            </label>
-            <input
-              type="text"
-              id="agrupacion"
-              name="agrupacion"
-              required
-              placeholder="Ej. Solista, Trío Jahdiel, Ministerio Hallel Voces..."
-              class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-            />
-            <p class="error-msg hidden mt-1 text-xs text-red-400">Indica el nombre de la agrupación, ministerio o cantante.</p>
-          </div>
-
-          <!-- 7 & 8. Ciudad de residencia y Número de integrantes -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="ciudad" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-                7. Ciudad de residencia <span class="text-[#E6B86A]">*</span>
-              </label>
-              <input
-                type="text"
-                id="ciudad"
-                name="ciudad"
-                required
-                placeholder="Ej. Bogotá"
-                class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-              />
-              <p class="error-msg hidden mt-1 text-xs text-red-400">Por favor indica tu ciudad de residencia.</p>
-            </div>
-
-            <div>
-              <label for="integrantes" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-                8. Si aplica, número de integrantes
-              </label>
-              <input
-                type="number"
-                id="integrantes"
-                name="integrantes"
-                min="1"
-                max="150"
-                placeholder="1 si es solista"
-                class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base"
-              />
-              <span class="block mt-1 text-[11px] text-[#D4A359]/85">Escribe <strong>1</strong> si participas como solista.</span>
-            </div>
-          </div>
-
-          <!-- 9. Fechas o sábados tentativos -->
-          <div>
-            <label for="fechas" class="block text-sm font-semibold text-[#F6E8D5] mb-1.5">
-              9. Fechas o sábados tentativos en los que podrías acompañarnos <span class="text-xs font-normal text-[#D4A359]/80">(Opcional)</span>
-            </label>
-            <textarea
-              id="fechas"
-              name="fechas"
-              rows="2"
-              placeholder="Ej. Primeros sábados del mes, cualquier sábado en la mañana, o fechas específicas..."
-              class="input-gold w-full rounded-xl px-4 py-3 text-sm sm:text-base resize-none"
-            ></textarea>
-          </div>
-
-          <!-- Botón de envío -->
-          <div class="pt-3">
-            <button
-              type="submit"
-              class="btn-gold w-full py-4 px-6 rounded-2xl font-extrabold text-sm sm:text-base tracking-wide uppercase flex items-center justify-center gap-2.5 cursor-pointer"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
-              </svg>
-              <span>Enviar mi registro y disponibilidad</span>
-            </button>
-          </div>
-
-        </form>
-      </section>
-
-      <!-- Pantalla de Confirmación (Oculta inicialmente) -->
-      <section id="confirmation-section" class="hidden px-6 py-8 sm:px-10 text-center">
-        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#134E5E] to-[#1B5E6B] border-2 border-[#E6B86A] flex items-center justify-center shadow-lg">
-          <svg class="w-8 h-8 text-[#E6B86A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-          </svg>
-        </div>
-
-        <h2 class="text-2xl sm:text-3xl font-bold text-[#E6B86A]">
-          ¡Gracias por poner tu don al servicio de Dios!
-        </h2>
-        <p class="mt-2.5 text-sm sm:text-base text-[#F4ECE1] max-w-lg mx-auto leading-relaxed">
-          Hemos recibido tu información con mucha alegría. El equipo de <strong>Palermo Worship</strong> estará revisando la programación y se comunicará contigo muy pronto para confirmar la fecha en la que nos acompañarás.
-        </p>
-
-        <!-- Resumen de datos registrados -->
-        <div class="mt-6 p-5 rounded-2xl bg-[#18100C]/80 border border-[#D4A359]/40 text-left space-y-2.5 text-sm">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-[#D4A359] border-b border-[#D4A359]/25 pb-2 mb-3">
-            Resumen de tu inscripción
-          </h3>
-          <div id="summary-content" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4 text-[#F9F5F0]">
-            <!-- Se llena dinámicamente con JS -->
-          </div>
-        </div>
-
-        <!-- Botones de exportación / utilidad para coordinación -->
-        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <button
-            type="button"
-            id="copy-btn"
-            class="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#134E5E] hover:bg-[#1B5E6B] text-white font-semibold text-sm border border-[#D4A359]/40 transition flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <svg class="w-4 h-4 text-[#E6B86A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
-            </svg>
-            <span id="copy-btn-text">Copiar datos para Excel</span>
-          </button>
-
-          <button
-            type="button"
-            id="download-csv-btn"
-            class="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#D4A359]/20 hover:bg-[#D4A359]/30 text-[#E6B86A] font-semibold text-sm border border-[#D4A359]/50 transition flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-            </svg>
-            <span>Descargar CSV (Excel)</span>
-          </button>
-        </div>
-
-        <div class="mt-5 pt-4 border-t border-[#D4A359]/20">
-          <button
-            type="button"
-            id="reset-btn"
-            class="text-sm font-medium text-[#D4A359] hover:text-[#E6B86A] underline underline-offset-4 cursor-pointer"
-          >
-            Registrar otro cantante o agrupación
-          </button>
-        </div>
-      </section>
-
-      <!-- Pie de página institucional -->
-      <footer class="px-6 py-4 bg-[#140D0A]/90 border-t border-[#D4A359]/25 text-center text-xs text-[#D4A359]/80">
-        <p>Iglesia Adventista del Séptimo Día de Palermo • Bogotá, Colombia</p>
-        <p class="mt-0.5 text-[11px] text-white/60">Ministerio de Alabanza y Adoración — Palermo Worship</p>
-      </footer>
-
+<body>
+  <div class="container">
+    <div class="top-banner">
+      <div class="church">Iglesia Adventista del Séptimo Día • Palermo Worship</div>
+      <div class="sub">Bogotá, Colombia • Programación de Especiales de Alabanza</div>
     </div>
-  </main>
 
-  <script>
-    /**
-     * Lógica de validación, envío, resumen y exportación CSV/Excel
-     * para el Formulario de Especiales de Alabanza - Iglesia Adventista de Palermo
-     */
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('worship-form');
-      const formSection = document.getElementById('form-section');
-      const confirmationSection = document.getElementById('confirmation-section');
-      const formAlert = document.getElementById('form-alert');
-      const formAlertText = document.getElementById('form-alert-text');
-      const summaryContent = document.getElementById('summary-content');
-      const copyBtn = document.getElementById('copy-btn');
-      const copyBtnText = document.getElementById('copy-btn-text');
-      const downloadCsvBtn = document.getElementById('download-csv-btn');
-      const resetBtn = document.getElementById('reset-btn');
+    <div class="hero">
+      <span class="badge">Vinculación de Talentos y Ministerios</span>
+      <h1>¡Queremos contar con tu talento!</h1>
+      <p class="subtitle">Invitación a participar en nuestros Especiales de Alabanza y Adoración</p>
 
-      // Almacenamiento en memoria del último registro enviado
-      let lastSubmission = null;
+      <div class="spiritual-note">
+        Con mucho cariño te extendemos esta invitación para servir al Señor con tu voz, instrumento o ministerio en la <strong>Iglesia Adventista de Palermo (Bogotá)</strong>. Déjanos tus datos de contacto y agrupación: estaremos consultando las fechas disponibles para coordinar juntos el sábado en que puedas acompañarnos.
+        <div class="verse">“Cantad al Señor cántico nuevo; cantad al Señor, toda la tierra.” — Salmo 96:1</div>
+      </div>
+    </div>
 
-      // Expresión regular básica para validación de correo
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    <form id="registroForm" novalidate>
+      <div class="field-group">
+        <label for="nombre">Nombre <span class="req">*</span></label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. María Fernanda Gómez" required />
+        <div class="error-msg" id="err-nombre"></div>
+      </div>
 
-      /**
-       * Marca o limpia el estado de error de un campo individual
-       */
-      function setFieldError(inputEl, hasError, customMessage = null) {
-        const errorEl = inputEl.parentElement.querySelector('.error-msg');
-        if (hasError) {
-          inputEl.classList.add('input-error');
-          if (errorEl) {
-            if (customMessage) errorEl.textContent = customMessage;
-            errorEl.classList.remove('hidden');
-          }
-        } else {
-          inputEl.classList.remove('input-error');
-          if (errorEl) {
-            errorEl.classList.add('hidden');
-          }
-        }
-      }
+      <div class="grid-2">
+        <div class="field-group">
+          <label for="telefono">Teléfono <span class="req">*</span></label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 310 555 0192" required />
+          <div class="error-msg" id="err-telefono"></div>
+        </div>
 
-      /**
-       * Valida todos los campos obligatorios y la coincidencia de correo
-       */
-      function validateForm() {
-        let isValid = true;
-        let firstInvalidEl = null;
+        <div class="field-group">
+          <label for="numero_telefonico">Número telefónico</label>
+          <input type="tel" id="numero_telefonico" name="numero_telefonico" placeholder="Ej. WhatsApp o línea alterna" />
+          <div class="error-msg" id="err-numero_telefonico"></div>
+        </div>
+      </div>
 
-        const nombre = document.getElementById('nombre');
-        const telefono = document.getElementById('telefono');
-        const correo = document.getElementById('correo');
-        const confirmarCorreo = document.getElementById('confirmarCorreo');
-        const agrupacion = document.getElementById('agrupacion');
-        const ciudad = document.getElementById('ciudad');
+      <div class="grid-2">
+        <div class="field-group">
+          <label for="correo">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required />
+          <div class="error-msg" id="err-correo"></div>
+        </div>
 
-        // 1. Nombre
-        if (!nombre.value.trim()) {
-          setFieldError(nombre, true);
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = nombre;
-        } else {
-          setFieldError(nombre, false);
-        }
+        <div class="field-group">
+          <label for="confirmacion_correo">Confirmación del correo <span class="req">*</span></label>
+          <input type="email" id="confirmacion_correo" name="confirmacion_correo" placeholder="Repite tu correo electrónico" required />
+          <div class="error-msg" id="err-confirmacion_correo"></div>
+        </div>
+      </div>
 
-        // 2. Teléfono principal (mínimo 7 dígitos)
-        const digitsCount = telefono.value.replace(/\D/g, '').length;
-        if (digitsCount < 7) {
-          setFieldError(telefono, true);
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = telefono;
-        } else {
-          setFieldError(telefono, false);
-        }
+      <div class="field-group">
+        <label for="agrupacion_o_cantante">Nombre de la agrupación o cantante <span class="req">*</span></label>
+        <input type="text" id="agrupacion_o_cantante" name="agrupacion_o_cantante" placeholder="Ej. Solista, Trío Jahdiel, Coro Juvenil..." required />
+        <div class="error-msg" id="err-agrupacion_o_cantante"></div>
+      </div>
 
-        // 3. Correo electrónico
-        const correoVal = correo.value.trim();
-        if (!emailRegex.test(correoVal)) {
-          setFieldError(correo, true);
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = correo;
-        } else {
-          setFieldError(correo, false);
-        }
+      <div class="grid-2">
+        <div class="field-group">
+          <label for="ciudad_residencia">Ciudad de residencia <span class="req">*</span></label>
+          <input type="text" id="ciudad_residencia" name="ciudad_residencia" placeholder="Ej. Bogotá, Chía, Soacha..." required />
+          <div class="error-msg" id="err-ciudad_residencia"></div>
+        </div>
 
-        // 4. Confirmación del correo
-        const confirmarVal = confirmarCorreo.value.trim();
-        if (!confirmarVal || confirmarVal.toLowerCase() !== correoVal.toLowerCase()) {
-          setFieldError(
-            confirmarCorreo,
-            true,
-            !confirmarVal ? 'Por favor confirma tu correo electrónico.' : 'Los correos electrónicos no coinciden.'
-          );
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = confirmarCorreo;
-        } else {
-          setFieldError(confirmarCorreo, false);
-        }
+        <div class="field-group">
+          <label for="numero_integrantes">Si aplica, número de integrantes de la agrupación</label>
+          <input type="number" id="numero_integrantes" name="numero_integrantes" min="1" max="200" placeholder="Ej. 1, 3, 4, 12..." />
+          <div class="error-msg" id="err-numero_integrantes"></div>
+        </div>
+      </div>
 
-        // 6. Agrupación o cantante
-        if (!agrupacion.value.trim()) {
-          setFieldError(agrupacion, true);
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = agrupacion;
-        } else {
-          setFieldError(agrupacion, false);
-        }
+      <div class="field-group">
+        <label for="fechas_disponibles">Sábados o fechas en las que te gustaría / podrías acompañarnos</label>
+        <textarea id="fechas_disponibles" name="fechas_disponibles" placeholder="Cuéntanos qué sábados o meses tienes disponibilidad para que coordinemos contigo."></textarea>
+      </div>
 
-        // 7. Ciudad
-        if (!ciudad.value.trim()) {
-          setFieldError(ciudad, true);
-          isValid = false;
-          if (!firstInvalidEl) firstInvalidEl = ciudad;
-        } else {
-          setFieldError(ciudad, false);
-        }
+      <button type="submit" class="btn-submit" id="btnSubmit">Enviar registro y disponibilidad</button>
 
-        if (!isValid) {
-          formAlert.classList.remove('hidden');
-          formAlertText.textContent =
-            correoVal.toLowerCase() !== confirmarVal.toLowerCase() && confirmarVal !== ''
-              ? 'Verifica que ambos campos de correo electrónico coincidan exactamente.'
-              : 'Por favor completa los campos obligatorios marcados en rojo.';
-          if (firstInvalidEl) firstInvalidEl.focus();
-        } else {
-          formAlert.classList.add('hidden');
-        }
+      <div class="status-banner error" id="formErrorBanner"></div>
 
-        return isValid;
-      }
-
-      // Validación en tiempo real al escribir
-      form.querySelectorAll('input').forEach((input) => {
-        input.addEventListener('input', () => {
-          if (input.classList.contains('input-error')) {
-            validateForm();
-          }
-        });
-      });
-
-      // Manejo del envío del formulario
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
-
-        // Recopilar datos estructurados
-        lastSubmission = {
-          fechaRegistro: new Date().toLocaleString('es-CO'),
-          nombre: document.getElementById('nombre').value.trim(),
-          telefono: document.getElementById('telefono').value.trim(),
-          correo: document.getElementById('correo').value.trim(),
-          telefonoAlterno: document.getElementById('telefonoAlterno').value.trim() || 'No registrado',
-          agrupacion: document.getElementById('agrupacion').value.trim(),
-          ciudad: document.getElementById('ciudad').value.trim(),
-          integrantes: document.getElementById('integrantes').value.trim() || '1 (Solista / No especificado)',
-          fechas: document.getElementById('fechas').value.trim() || 'Por coordinar'
-        };
-
-        // Guardar respaldo local por si el usuario recarga
-        try {
-          const existing = JSON.parse(localStorage.getItem('palermo_worship_registros') || '[]');
-          existing.push(lastSubmission);
-          localStorage.setItem('palermo_worship_registros', JSON.stringify(existing));
-        } catch (err) {
-          // Ignorar si localStorage está restringido
-        }
-
-        // Renderizar resumen visual
-        renderSummary(lastSubmission);
-
-        // Cambiar vista a confirmación
-        formSection.classList.add('hidden');
-        confirmationSection.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-      /**
-       * Construye el resumen visual en la tarjeta de confirmación
-       */
-      function renderSummary(data) {
-        const items = [
-          { label: 'Nombre', value: data.nombre },
-          { label: 'Teléfono / WhatsApp', value: data.telefono },
-          { label: 'Correo electrónico', value: data.correo },
-          { label: 'Teléfono alterno', value: data.telefonoAlterno },
-          { label: 'Agrupación / Cantante', value: data.agrupacion },
-          { label: 'Ciudad de residencia', value: data.ciudad },
-          { label: 'N.º de integrantes', value: data.integrantes },
-          { label: 'Fechas sugeridas', value: data.fechas }
-        ];
-
-        summaryContent.innerHTML = items
-          .map(
-            (item) => `
-            <div class="bg-black/25 p-2.5 rounded-xl border border-[#D4A359]/15">
-              <span class="block text-[11px] uppercase tracking-wider text-[#D4A359]">${escapeHTML(item.label)}</span>
-              <span class="block font-medium text-white break-words mt-0.5">${escapeHTML(item.value)}</span>
-            </div>
-          `
-          )
-          .join('');
-      }
-
-      /**
-       * Escapa caracteres HTML para evitar inyecciones en el resumen
-       */
-      function escapeHTML(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      }
-
-      /**
-       * Copiar fila tabulada lista para pegar directamente en Excel
-       */
-      copyBtn.addEventListener('click', () => {
-        if (!lastSubmission) return;
-        const rowTSV = [
-          lastSubmission.nombre,
-          lastSubmission.telefono,
-          lastSubmission.correo,
-          lastSubmission.telefonoAlterno,
-          lastSubmission.agrupacion,
-          lastSubmission.ciudad,
-          lastSubmission.integrantes,
-          lastSubmission.fechas
-        ].join('\t');
-
-        const tempInput = document.createElement('textarea');
-        tempInput.value = rowTSV;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-
-        const originalText = copyBtnText.textContent;
-        copyBtnText.textContent = '¡Copiado para Excel!';
-        setTimeout(() => {
-          copyBtnText.textContent = originalText;
-        }, 2500);
-      });
-
-      /**
-       * Descargar archivo CSV con BOM UTF-8 compatible con Excel
-       */
-      downloadCsvBtn.addEventListener('click', () => {
-        if (!lastSubmission) return;
-        const headers = [
-          'Fecha Registro',
-          'Nombre',
-          'Telefono WhatsApp',
-          'Correo Electronico',
-          'Telefono Alterno',
-          'Agrupacion o Cantante',
-          'Ciudad',
-          'Numero Integrantes',
-          'Fechas Tentativas'
-        ];
-        const values = [
-          lastSubmission.fechaRegistro,
-          lastSubmission.nombre,
-          lastSubmission.telefono,
-          lastSubmission.correo,
-          lastSubmission.telefonoAlterno,
-          lastSubmission.agrupacion,
-          lastSubmission.ciudad,
-          lastSubmission.integrantes,
-          lastSubmission.fechas
-        ].map((v) => `"${String(v).replace(/"/g, '""')}"`);
-
-        const csvContent = '\uFEFF' + headers.join(';') + '\n' + values.join(';');
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `Registro_Especial_Palermo_${lastSubmission.nombre.replace(/\s+/g, '_')}.csv`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      });
-
-      /**
-       * Volver a mostrar el formulario limpio para otro registro
-       */
-      resetBtn.addEventListener('click', () => {
-        form.reset();
-        form.querySelectorAll('.input-error').forEach((el) => el.classList.remove('input-error'));
-        form.querySelectorAll('.error-msg').forEach((el) => el.classList.add('hidden'));
-        formAlert.classList.add('hidden');
-        confirmationSection.classList.add('hidden');
-        formSection.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
-</body>
-</html>
+      <div class="confirmation-box" id="confirmation
