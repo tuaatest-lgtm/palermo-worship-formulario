@@ -409,10 +409,7 @@
   </div>
 
   <script>
-    // =========================================================================
-    // REEMPLAZA ESTA LÍNEA CON LA URL /exec DE TU GOOGLE APPS SCRIPT
-    // =========================================================================
-    const APPS_SCRIPT_EXEC_URL = 'https://script.google.com/macros/s/AKfycbzs39-Nc6wSxWQvB7u7FM7yfAAmaBLupfVXL3SHyvnx3yKx9vxNTAGpkN3zcwAqP1bfzg/exec';
+    const APPS_SCRIPT_EXEC_URL = 'https://script.google.com/macros/s/AKfycbzsZdfkd-yUEvNnfu9owDnD5yo9mqG0ccCL4mYDNRCtyfoNlnLqbHtjHIpCCw1LkKaAmA/exec';
 
     const form = document.getElementById('registroForm');
     const btnSubmit = document.getElementById('btnSubmit');
@@ -502,17 +499,12 @@
     }
 
     async function sendToGoogleSheets(payload) {
-      if (!APPS_SCRIPT_EXEC_URL || APPS_SCRIPT_EXEC_URL.includes('https://script.google.com/macros/s/AKfycbxGDCOsOcafgeTL9_TBvxZ3cqNQsec7JoFsC9IBRhamN7RxHsrPzOxCSce-DT8ioRmd5Q/exec')) {
-        return { sent: false, reason: 'URL /exec pendiente de configurar' };
-      }
-
       await fetch(APPS_SCRIPT_EXEC_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
-
       return { sent: true };
     }
 
@@ -584,16 +576,10 @@
       lastSubmittedRecord = payload;
 
       try {
-        const result = await sendToGoogleSheets(payload);
+        await sendToGoogleSheets(payload);
         confirmationBox.classList.add('visible');
-
-        if (result.sent) {
-          confirmationText.textContent =
-            'Tu registro fue enviado a nuestra hoja de coordinación de la Iglesia Adventista de Palermo. Pronto nos pondremos en contacto para revisar fechas contigo.';
-        } else {
-          confirmationText.textContent =
-            'Registro validado localmente. Recuerda reemplazar APPS_SCRIPT_EXEC_URL en el archivo index.html para que llegue automáticamente a tu Google Sheets.';
-        }
+        confirmationText.textContent =
+          'Tu registro fue enviado a nuestra hoja de coordinación de la Iglesia Adventista de Palermo. Pronto nos pondremos en contacto para revisar fechas contigo.';
         confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } catch (err) {
         errorBanner.textContent = 'Ocurrió un inconveniente al intentar enviar. Puedes copiar la fila o descargar el CSV desde aquí.';
