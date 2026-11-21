@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro Especiales de Alabanza — Iglesia Adventista de Palermo</title>
+
   <style>
     :root {
       --bg-dark: #160E0A;
@@ -14,12 +16,16 @@
       --teal-header: #134E5E;
       --text-main: #F9F5F0;
       --text-muted: #D5C5B2;
-      --border-gold: rgba(212, 163, 89, 0.45);
+      --border-gold: rgba(212,163,89,.45);
       --error-red: #FF6B6B;
       --success-green: #4ADE80;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background: radial-gradient(circle at top, #3B2418 0%, #1A110D 55%, #110A07 100%);
@@ -33,15 +39,15 @@
     .container {
       max-width: 680px;
       margin: 0 auto;
-      background-color: var(--bg-card);
+      background: var(--bg-card);
       border: 2px solid var(--accent-gold);
       border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 20px 50px rgba(0,0,0,.65);
     }
 
     .top-banner {
-      background-color: var(--teal-header);
+      background: var(--teal-header);
       padding: 16px 24px;
       text-align: center;
       border-bottom: 2px solid var(--accent-gold);
@@ -57,15 +63,14 @@
 
     .top-banner .sub {
       font-size: 12px;
-      color: #FFFFFF;
+      color: white;
       margin-top: 2px;
-      opacity: 0.92;
     }
 
     .hero {
       padding: 28px 28px 20px;
       text-align: center;
-      background: linear-gradient(180deg, rgba(212, 163, 89, 0.12) 0%, rgba(42, 27, 20, 0) 100%);
+      background: linear-gradient(180deg, rgba(212,163,89,.12), transparent);
       border-bottom: 1px solid var(--border-gold);
     }
 
@@ -78,29 +83,28 @@
       letter-spacing: 1.1px;
       text-transform: uppercase;
       color: var(--accent-gold-light);
-      background-color: var(--bg-input);
+      background: var(--bg-input);
       border: 1px solid var(--accent-gold);
       margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(22px, 4vw, 30px);
+      font-size: clamp(22px,4vw,30px);
       font-weight: 800;
       text-transform: uppercase;
       color: var(--accent-gold-light);
-      letter-spacing: 0.5px;
       margin-bottom: 8px;
     }
 
     .subtitle {
       font-size: 15px;
-      color: #FFFFFF;
+      color: white;
       font-weight: 600;
       margin-bottom: 14px;
     }
 
     .spiritual-note {
-      background-color: var(--bg-input);
+      background: var(--bg-input);
       border: 1px solid var(--border-gold);
       border-radius: 14px;
       padding: 16px 18px;
@@ -109,7 +113,9 @@
       color: var(--text-muted);
     }
 
-    .spiritual-note strong { color: var(--accent-gold-light); }
+    .spiritual-note strong {
+      color: var(--accent-gold-light);
+    }
 
     .verse {
       margin-top: 10px;
@@ -119,8 +125,13 @@
       text-align: center;
     }
 
-    form { padding: 26px 28px 32px; }
-    .field-group { margin-bottom: 18px; }
+    form {
+      padding: 26px 28px 32px;
+    }
+
+    .field-group {
+      margin-bottom: 18px;
+    }
 
     label {
       display: block;
@@ -130,7 +141,10 @@
       margin-bottom: 7px;
     }
 
-    .req { color: var(--error-red); margin-left: 2px; }
+    .req {
+      color: var(--error-red);
+      margin-left: 2px;
+    }
 
     input[type="text"],
     input[type="tel"],
@@ -141,20 +155,28 @@
       padding: 13px 15px;
       border-radius: 11px;
       border: 1.5px solid var(--border-gold);
-      background-color: var(--bg-input);
-      color: #FFFFFF;
+      background: var(--bg-input);
+      color: white;
       font-size: 15px;
       font-family: inherit;
     }
 
-    input::placeholder, textarea::placeholder { color: #8F7E6B; }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent-gold-light);
-      box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.22);
+    input::placeholder,
+    textarea::placeholder {
+      color: #8F7E6B;
     }
 
-    textarea { min-height: 82px; resize: vertical; }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-gold-light);
+      box-shadow: 0 0 0 3px rgba(212,163,89,.22);
+    }
+
+    textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
 
     .grid-2 {
       display: grid;
@@ -162,9 +184,16 @@
       gap: 16px;
     }
 
-    @media (max-width: 580px) {
-      .grid-2 { grid-template-columns: 1fr; gap: 0; }
-      form, .hero { padding-left: 18px; padding-right: 18px; }
+    @media (max-width:580px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      form, .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
     }
 
     .error-msg {
@@ -180,16 +209,19 @@
       padding: 16px 24px;
       border: 1px solid var(--accent-gold-light);
       border-radius: 13px;
-      background: linear-gradient(180deg, #E3B66B 0%, #C79344 100%);
+      background: linear-gradient(180deg,#E3B66B,#C79344);
       color: #1A100A;
       font-size: 15px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.9px;
+      letter-spacing: .9px;
       cursor: pointer;
     }
 
-    .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; }
+    .btn-submit:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
 
     .status-banner {
       margin-top: 14px;
@@ -201,31 +233,55 @@
 
     .status-banner.error {
       display: block;
-      background-color: rgba(255, 107, 107, 0.14);
+      background: rgba(255,107,107,.14);
       border: 1px solid var(--error-red);
       color: #FFD2D2;
+    }
+
+    .status-banner.info {
+      display: block;
+      background: rgba(212,163,89,.12);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold-light);
     }
 
     .confirmation-box {
       display: none;
       margin-top: 22px;
-      background-color: var(--bg-input);
+      background: var(--bg-input);
       border: 1.5px solid var(--success-green);
       border-radius: 16px;
       padding: 22px 20px;
     }
 
-    .confirmation-box.visible { display: block; }
-    .confirmation-box h2 { color: var(--success-green); font-size: 19px; margin-bottom: 8px; }
-    .confirmation-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 14px; }
+    .confirmation-box.visible {
+      display: block;
+    }
 
-    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .confirmation-box h2 {
+      color: var(--success-green);
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .confirmation-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
 
     .btn-secondary {
       padding: 10px 15px;
       border-radius: 10px;
       border: 1px solid var(--accent-gold);
-      background-color: #2A1B14;
+      background: #2A1B14;
       color: var(--accent-gold-light);
       font-size: 13px;
       font-weight: 700;
@@ -233,7 +289,7 @@
     }
 
     .footer {
-      background-color: var(--bg-dark);
+      background: var(--bg-dark);
       padding: 16px 20px;
       text-align: center;
       border-top: 1px solid var(--border-gold);
@@ -241,120 +297,223 @@
       color: var(--text-muted);
     }
 
-    .footer strong { color: var(--accent-gold-light); }
+    .footer strong {
+      color: var(--accent-gold-light);
+    }
+
+    .privacy-note {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 11px;
+      text-align: center;
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <div class="top-banner">
-      <div class="church">Iglesia Adventista del Séptimo Día • Palermo Worship</div>
-      <div class="sub">Bogotá, Colombia • Programación de Especiales de Alabanza</div>
+      <div class="church">
+        Iglesia Adventista del Séptimo Día • Palermo Worship
+      </div>
+      <div class="sub">
+        Bogotá, Colombia • Programación de Especiales de Alabanza
+      </div>
     </div>
 
     <div class="hero">
       <span class="badge">Vinculación de Talentos y Ministerios</span>
+
       <h1>¡Queremos contar con tu talento!</h1>
-      <p class="subtitle">Invitación a participar en nuestros Especiales de Alabanza y Adoración</p>
+
+      <p class="subtitle">
+        Invitación a participar en nuestros Especiales de Alabanza y Adoración
+      </p>
 
       <div class="spiritual-note">
-        Con mucho cariño te extendemos esta invitación para servir al Señor con tu voz, instrumento o ministerio en la <strong>Iglesia Adventista de Palermo (Bogotá)</strong>. Déjanos tus datos de contacto y agrupación: estaremos consultando las fechas disponibles para coordinar juntos el sábado en que puedas acompañarnos.
-        <div class="verse">“Cantad al Señor cántico nuevo; cantad al Señor, toda la tierra.” — Salmo 96:1</div>
+        Con mucho cariño te extendemos esta invitación para servir al Señor
+        con tu voz, instrumento o ministerio en la
+        <strong>Iglesia Adventista de Palermo (Bogotá)</strong>.
+        Déjanos tus datos de contacto y agrupación: estaremos consultando
+        las fechas disponibles para coordinar juntos el sábado en que puedas
+        acompañarnos.
+
+        <div class="verse">
+          “Cantad al Señor cántico nuevo; cantad al Señor, toda la tierra.”
+          — Salmo 96:1
+        </div>
       </div>
     </div>
 
     <form id="registroForm" novalidate>
+
       <div class="field-group">
         <label for="nombre">Nombre <span class="req">*</span></label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej. María Fernanda Gómez" required />
+        <input type="text" id="nombre" name="nombre"
+          placeholder="Ej. María Fernanda Gómez" required>
         <div class="error-msg" id="err-nombre"></div>
       </div>
 
       <div class="grid-2">
         <div class="field-group">
           <label for="telefono">Teléfono <span class="req">*</span></label>
-          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 310 555 0192" required />
+          <input type="tel" id="telefono" name="telefono"
+            placeholder="Ej. 310 555 0192" required>
           <div class="error-msg" id="err-telefono"></div>
         </div>
 
         <div class="field-group">
-          <label for="numero_telefonico">Número telefónico</label>
-          <input type="tel" id="numero_telefonico" name="numero_telefonico" placeholder="Ej. WhatsApp o línea alterna" />
+          <label for="numero_telefonico">Número telefónico alterno</label>
+          <input type="tel" id="numero_telefonico" name="numero_telefonico"
+            placeholder="Ej. WhatsApp o línea alterna">
           <div class="error-msg" id="err-numero_telefonico"></div>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="field-group">
-          <label for="correo">Correo electrónico <span class="req">*</span></label>
-          <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required />
+          <label for="correo">
+            Correo electrónico <span class="req">*</span>
+          </label>
+          <input type="email" id="correo" name="correo"
+            placeholder="correo@ejemplo.com" required>
           <div class="error-msg" id="err-correo"></div>
         </div>
 
         <div class="field-group">
-          <label for="confirmacion_correo">Confirmación del correo <span class="req">*</span></label>
-          <input type="email" id="confirmacion_correo" name="confirmacion_correo" placeholder="Repite tu correo electrónico" required />
+          <label for="confirmacion_correo">
+            Confirmación del correo <span class="req">*</span>
+          </label>
+          <input type="email" id="confirmacion_correo"
+            name="confirmacion_correo"
+            placeholder="Repite tu correo electrónico" required>
           <div class="error-msg" id="err-confirmacion_correo"></div>
         </div>
       </div>
 
       <div class="field-group">
-        <label for="agrupacion_o_cantante">Nombre de la agrupación o cantante <span class="req">*</span></label>
-        <input type="text" id="agrupacion_o_cantante" name="agrupacion_o_cantante" placeholder="Ej. Solista, Trío Jahdiel, Coro Juvenil..." required />
+        <label for="agrupacion_o_cantante">
+          Nombre de la agrupación o cantante <span class="req">*</span>
+        </label>
+        <input type="text" id="agrupacion_o_cantante"
+          name="agrupacion_o_cantante"
+          placeholder="Ej. Solista, Trío Jahdiel, Coro Juvenil..." required>
         <div class="error-msg" id="err-agrupacion_o_cantante"></div>
       </div>
 
       <div class="grid-2">
         <div class="field-group">
-          <label for="ciudad_residencia">Ciudad de residencia <span class="req">*</span></label>
-          <input type="text" id="ciudad_residencia" name="ciudad_residencia" placeholder="Ej. Bogotá, Chía, Soacha..." required />
+          <label for="ciudad_residencia">
+            Ciudad de residencia <span class="req">*</span>
+          </label>
+          <input type="text" id="ciudad_residencia"
+            name="ciudad_residencia"
+            placeholder="Ej. Bogotá, Chía, Soacha..." required>
           <div class="error-msg" id="err-ciudad_residencia"></div>
         </div>
 
         <div class="field-group">
-          <label for="numero_integrantes">Si aplica, número de integrantes de la agrupación</label>
-          <input type="number" id="numero_integrantes" name="numero_integrantes" min="1" max="200" placeholder="Ej. 1, 3, 4, 12..." />
+          <label for="numero_integrantes">
+            Número de integrantes de la agrupación
+          </label>
+          <input type="number" id="numero_integrantes"
+            name="numero_integrantes" min="1" max="200"
+            placeholder="Ej. 1, 3, 4, 12...">
           <div class="error-msg" id="err-numero_integrantes"></div>
         </div>
       </div>
 
       <div class="field-group">
-        <label for="fechas_disponibles">Sábados o fechas en las que te gustaría / podrías acompañarnos</label>
-        <textarea id="fechas_disponibles" name="fechas_disponibles" placeholder="Cuéntanos qué sábados o meses tienes disponibilidad para que coordinemos contigo."></textarea>
+        <label for="fechas_disponibles">
+          Sábados o fechas en las que te gustaría / podrías acompañarnos
+        </label>
+        <textarea id="fechas_disponibles" name="fechas_disponibles"
+          placeholder="Cuéntanos qué sábados o meses tienes disponibilidad para que coordinemos contigo."></textarea>
       </div>
 
-      <button type="submit" class="btn-submit" id="btnSubmit">Enviar registro y disponibilidad</button>
+      <button type="submit" class="btn-submit" id="btnSubmit">
+        Enviar registro y disponibilidad
+      </button>
 
-      <div class="status-banner error" id="formErrorBanner"></div>
+      <div class="status-banner" id="formErrorBanner"></div>
 
       <div class="confirmation-box" id="confirmationBox">
-        <h2>¡Gracias por disponer tu talento para Dios!</h2>
-        <p id="confirmationText">
-          Hemos recibido tu información de contacto. Nuestro equipo de coordinación se comunicará contigo para consultar fechas y programar tu participación.
-        </p>
+        <h2 id="confirmationTitle">
+          ¡Gracias por disponer tu talento para Dios!
+        </h2>
+
+        <p id="confirmationText"></p>
+
         <div class="actions-row">
-          <button type="button" class="btn-secondary" id="btnCopyRow">Copiar fila para Excel / Sheets</button>
-          <button type="button" class="btn-secondary" id="btnDownloadCsv">Descargar CSV</button>
-          <button type="button" class="btn-secondary" id="btnNewEntry">Registrar otro participante</button>
+          <button type="button" class="btn-secondary" id="btnCopyRow">
+            Copiar fila para Excel / Sheets
+          </button>
+
+          <button type="button" class="btn-secondary" id="btnDownloadCsv">
+            Descargar CSV
+          </button>
+
+          <button type="button" class="btn-secondary" id="btnNewEntry">
+            Registrar otro participante
+          </button>
         </div>
+      </div>
+
+      <div class="privacy-note">
+        La información suministrada será utilizada para la coordinación
+        de actividades musicales de Palermo Worship.
       </div>
     </form>
 
     <div class="footer">
-      <strong>Iglesia Adventista de Palermo — Bogotá</strong><br />
+      <strong>Iglesia Adventista de Palermo — Bogotá</strong><br>
       Ministerio de Alabanza y Adoración (Palermo Worship)
     </div>
   </div>
 
+  <!--
+    El iframe recibe la respuesta del servidor sin intentar leer
+    contenido de otro dominio.
+  -->
+  <iframe
+    name="respuestaAppsScript"
+    id="respuestaAppsScript"
+    style="display:none"
+    title="Respuesta del servidor">
+  </iframe>
+
   <script>
-    const APPS_SCRIPT_EXEC_URL = 'https://script.google.com/macros/s/AKfycbwRcuwwBYG8vq_Cju-fxHB0G_7v5us57iUQQx9Mwu3xjOew_MUp4Xkf4p-a7O_EZLq8uw/exec';
+    /********************************************************
+     * CONFIGURACIÓN
+     ********************************************************/
+
+    const APPS_SCRIPT_EXEC_URL =
+      'https://script.google.com/macros/s/AKfycbwRcuwwBYG8vq_Cju-fxHB0G_7v5us57iUQQx9Mwu3xjOew_MUp4Xkf4p-a7O_EZLq8uw/exec';
 
     const form = document.getElementById('registroForm');
     const btnSubmit = document.getElementById('btnSubmit');
     const errorBanner = document.getElementById('formErrorBanner');
     const confirmationBox = document.getElementById('confirmationBox');
     const confirmationText = document.getElementById('confirmationText');
+    const confirmationTitle = document.getElementById('confirmationTitle');
+    const iframe = document.getElementById('respuestaAppsScript');
 
     let lastSubmittedRecord = null;
+    let envioEnCurso = false;
+
+    /*
+     * Formulario auxiliar que envía POST tradicional.
+     * No utiliza fetch ni mode:no-cors.
+     */
+    const postForm = document.createElement('form');
+    postForm.method = 'POST';
+    postForm.action = APPS_SCRIPT_EXEC_URL;
+    postForm.target = 'respuestaAppsScript';
+    postForm.enctype = 'application/x-www-form-urlencoded';
+    postForm.acceptCharset = 'UTF-8';
+    postForm.style.display = 'none';
+    document.body.appendChild(postForm);
 
     function setError(fieldId, message) {
       const el = document.getElementById('err-' + fieldId);
@@ -362,9 +521,25 @@
     }
 
     function clearErrors() {
-      document.querySelectorAll('.error-msg').forEach((el) => (el.textContent = ''));
+      document.querySelectorAll('.error-msg').forEach(el => {
+        el.textContent = '';
+      });
+
       errorBanner.style.display = 'none';
+      errorBanner.className = 'status-banner';
       errorBanner.textContent = '';
+    }
+
+    function showError(message) {
+      errorBanner.className = 'status-banner error';
+      errorBanner.textContent = message;
+      errorBanner.style.display = 'block';
+    }
+
+    function showInfo(message) {
+      errorBanner.className = 'status-banner info';
+      errorBanner.textContent = message;
+      errorBanner.style.display = 'block';
     }
 
     function isValidEmail(email) {
@@ -375,149 +550,350 @@
       clearErrors();
       let valid = true;
 
-      const nombre = document.getElementById('nombre').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const correo = document.getElementById('correo').value.trim();
-      const confirmCorreo = document.getElementById('confirmacion_correo').value.trim();
-      const numeroTel = document.getElementById('numero_telefonico').value.trim();
-      const agrupacion = document.getElementById('agrupacion_o_cantante').value.trim();
-      const ciudad = document.getElementById('ciudad_residencia').value.trim();
-      const integrantes = document.getElementById('numero_integrantes').value.trim();
+      const nombre =
+        document.getElementById('nombre').value.trim();
 
-      if (!nombre) { setError('nombre', 'Por favor ingresa tu nombre.'); valid = false; }
-      if (!telefono) { setError('telefono', 'Por favor ingresa un número de teléfono.'); valid = false; }
-      if (!correo || !isValidEmail(correo)) { setError('correo', 'Ingresa un correo electrónico válido.'); valid = false; }
+      const telefono =
+        document.getElementById('telefono').value.trim();
+
+      const correo =
+        document.getElementById('correo').value.trim();
+
+      const confirmCorreo =
+        document.getElementById('confirmacion_correo').value.trim();
+
+      const numeroTel =
+        document.getElementById('numero_telefonico').value.trim();
+
+      const agrupacion =
+        document.getElementById('agrupacion_o_cantante').value.trim();
+
+      const ciudad =
+        document.getElementById('ciudad_residencia').value.trim();
+
+      const integrantes =
+        document.getElementById('numero_integrantes').value.trim();
+
+      if (!nombre) {
+        setError('nombre', 'Por favor ingresa tu nombre.');
+        valid = false;
+      }
+
+      if (!telefono) {
+        setError('telefono', 'Por favor ingresa un número de teléfono.');
+        valid = false;
+      }
+
+      if (!correo || !isValidEmail(correo)) {
+        setError('correo', 'Ingresa un correo electrónico válido.');
+        valid = false;
+      }
 
       if (!confirmCorreo) {
-        setError('confirmacion_correo', 'Por favor confirma tu correo electrónico.');
+        setError(
+          'confirmacion_correo',
+          'Por favor confirma tu correo electrónico.'
+        );
         valid = false;
       } else if (correo.toLowerCase() !== confirmCorreo.toLowerCase()) {
-        setError('confirmacion_correo', 'Los correos electrónicos no coinciden.');
+        setError(
+          'confirmacion_correo',
+          'Los correos electrónicos no coinciden.'
+        );
         valid = false;
       }
 
-      if (numeroTel && numeroTel.replace(/\D/g, '').length < 7) {
-        setError('numero_telefonico', 'Verifica el número telefónico ingresado.');
+      if (numeroTel &&
+          numeroTel.replace(/\D/g, '').length < 7) {
+        setError(
+          'numero_telefonico',
+          'Verifica el número telefónico ingresado.'
+        );
         valid = false;
       }
 
-      if (!agrupacion) { setError('agrupacion_o_cantante', 'Indica el nombre de la agrupación o cantante.'); valid = false; }
-      if (!ciudad) { setError('ciudad_residencia', 'Indica tu ciudad de residencia.'); valid = false; }
+      if (!agrupacion) {
+        setError(
+          'agrupacion_o_cantante',
+          'Indica el nombre de la agrupación o cantante.'
+        );
+        valid = false;
+      }
 
-      if (integrantes && (Number(integrantes) < 1 || !Number.isInteger(Number(integrantes)))) {
-        setError('numero_integrantes', 'Ingresa un número entero válido (ej. 1, 3, 5).');
+      if (!ciudad) {
+        setError(
+          'ciudad_residencia',
+          'Indica tu ciudad de residencia.'
+        );
+        valid = false;
+      }
+
+      if (integrantes &&
+          (Number(integrantes) < 1 ||
+           !Number.isInteger(Number(integrantes)) ||
+           Number(integrantes) > 200)) {
+        setError(
+          'numero_integrantes',
+          'Ingresa un número entero entre 1 y 200.'
+        );
         valid = false;
       }
 
       if (!valid) {
-        errorBanner.textContent = 'Por favor revisa los campos resaltados antes de enviar.';
-        errorBanner.style.display = 'block';
+        showError(
+          'Por favor revisa los campos resaltados antes de enviar.'
+        );
       }
 
       return valid;
     }
 
-    async function sendToGoogleSheets(payload) {
-      const params = new URLSearchParams();
-      Object.entries(payload).forEach(([k, v]) => params.append(k, v || ''));
-      await fetch(APPS_SCRIPT_EXEC_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: params
+    function createPayload() {
+      return {
+        fecha_registro: new Date().toISOString(),
+
+        registro_id:
+          'PW-' + Date.now() + '-' +
+          Math.random().toString(36).slice(2, 10),
+
+        nombre:
+          document.getElementById('nombre').value.trim(),
+
+        telefono:
+          document.getElementById('telefono').value.trim(),
+
+        correo:
+          document.getElementById('correo').value.trim(),
+
+        confirmacion_correo:
+          document.getElementById('confirmacion_correo').value.trim(),
+
+        numero_telefonico:
+          document.getElementById('numero_telefonico').value.trim(),
+
+        agrupacion_o_cantante:
+          document.getElementById('agrupacion_o_cantante').value.trim(),
+
+        ciudad_residencia:
+          document.getElementById('ciudad_residencia').value.trim(),
+
+        numero_integrantes:
+          document.getElementById('numero_integrantes').value.trim(),
+
+        fechas_disponibles:
+          document.getElementById('fechas_disponibles').value.trim()
+      };
+    }
+
+    function sendToGoogleSheets(payload) {
+      postForm.replaceChildren();
+
+      Object.entries(payload).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value == null ? '' : String(value);
+        postForm.appendChild(input);
       });
+
+      /*
+       * Envío POST tradicional al iframe.
+       * El navegador realiza la solicitud sin que JavaScript
+       * tenga que leer la respuesta cross-origin.
+       */
+      postForm.submit();
     }
 
     function recordToTsv(rec) {
       const cols = [
-        rec.fecha_registro, rec.nombre, rec.telefono, rec.correo,
-        rec.confirmacion_correo, rec.numero_telefonico, rec.agrupacion_o_cantante,
-        rec.ciudad_residencia, rec.numero_integrantes, rec.fechas_disponibles
+        rec.fecha_registro,
+        rec.nombre,
+        rec.telefono,
+        rec.correo,
+        rec.confirmacion_correo,
+        rec.numero_telefonico,
+        rec.agrupacion_o_cantante,
+        rec.ciudad_residencia,
+        rec.numero_integrantes,
+        rec.fechas_disponibles
       ];
-      return cols.map((v) => String(v || '').replace(/\t|\r?\n/g, ' ')).join('\t');
+
+      return cols.map(v =>
+        String(v || '').replace(/\t|\r?\n/g, ' ')
+      ).join('\t');
     }
 
     function recordToCsv(rec) {
       const headers = [
-        'Fecha', 'Nombre', 'Teléfono', 'Correo', 'Confirmación correo',
-        'Número telefónico', 'Agrupación o cantante', 'Ciudad de residencia',
-        'Número de integrantes', 'Fechas disponibles'
+        'Fecha',
+        'Nombre',
+        'Teléfono',
+        'Correo',
+        'Confirmación correo',
+        'Número telefónico',
+        'Agrupación o cantante',
+        'Ciudad de residencia',
+        'Número de integrantes',
+        'Fechas disponibles'
       ];
+
       const vals = [
-        rec.fecha_registro, rec.nombre, rec.telefono, rec.correo,
-        rec.confirmacion_correo, rec.numero_telefonico, rec.agrupacion_o_cantante,
-        rec.ciudad_residencia, rec.numero_integrantes, rec.fechas_disponibles
+        rec.fecha_registro,
+        rec.nombre,
+        rec.telefono,
+        rec.correo,
+        rec.confirmacion_correo,
+        rec.numero_telefonico,
+        rec.agrupacion_o_cantante,
+        rec.ciudad_residencia,
+        rec.numero_integrantes,
+        rec.fechas_disponibles
       ];
-      const esc = (s) => `"${String(s || '').replace(/"/g, '""')}"`;
-      return headers.map(esc).join(',') + '\n' + vals.map(esc).join(',');
+
+      const esc = value =>
+        '"' + String(value || '').replace(/"/g, '""') + '"';
+
+      return headers.map(esc).join(',') +
+        '\n' + vals.map(esc).join(',');
     }
 
-    form.addEventListener('submit', async (e) => {
+    /********************************************************
+     * ENVÍO DEL FORMULARIO
+     ********************************************************/
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      if (envioEnCurso) return;
       if (!validateForm()) return;
 
+      envioEnCurso = true;
       btnSubmit.disabled = true;
       btnSubmit.textContent = 'Enviando registro...';
 
-      const payload = {
-        fecha_registro: new Date().toLocaleString('es-CO'),
-        nombre: document.getElementById('nombre').value.trim(),
-        telefono: document.getElementById('telefono').value.trim(),
-        correo: document.getElementById('correo').value.trim(),
-        confirmacion_correo: document.getElementById('confirmacion_correo').value.trim(),
-        numero_telefonico: document.getElementById('numero_telefonico').value.trim(),
-        agrupacion_o_cantante: document.getElementById('agrupacion_o_cantante').value.trim(),
-        ciudad_residencia: document.getElementById('ciudad_residencia').value.trim(),
-        numero_integrantes: document.getElementById('numero_integrantes').value.trim(),
-        fechas_disponibles: document.getElementById('fechas_disponibles').value.trim()
-      };
-
+      const payload = createPayload();
       lastSubmittedRecord = payload;
 
       try {
-        await sendToGoogleSheets(payload);
+        sendToGoogleSheets(payload);
+
+        /*
+         * No afirmamos que el registro quedó guardado.
+         * El iframe no permite inspeccionar la respuesta JSON
+         * de Apps Script desde otro dominio.
+         */
         confirmationBox.classList.add('visible');
+
+        confirmationTitle.textContent =
+          'Solicitud de registro enviada';
+
         confirmationText.textContent =
-          'Tu registro fue enviado a nuestra hoja de coordinación de la Iglesia Adventista de Palermo. Pronto nos pondremos en contacto para revisar fechas contigo.';
-        confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } catch (err) {
-        errorBanner.textContent = 'Ocurrió un inconveniente al intentar enviar. Puedes copiar la fila o descargar el CSV desde aquí.';
-        errorBanner.style.display = 'block';
-        confirmationBox.classList.add('visible');
-      } finally {
+          'El formulario ha enviado la solicitud al servidor. ' +
+          'La recepción y el almacenamiento deben verificarse ' +
+          'en el registro de Google Sheets. Si necesitas confirmar ' +
+          'tu inscripción, espera la validación del equipo coordinador.';
+
+        confirmationBox.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
+        });
+
+        showInfo(
+          'Solicitud transmitida. No cierres esta página hasta que termine el envío.'
+        );
+
+      } catch (error) {
+        console.error('Error al enviar:', error);
+
+        showError(
+          'No fue posible iniciar el envío. Revisa tu conexión e inténtalo nuevamente.'
+        );
+
+        envioEnCurso = false;
         btnSubmit.disabled = false;
         btnSubmit.textContent = 'Enviar registro y disponibilidad';
       }
     });
 
-    document.getElementById('btnCopyRow').addEventListener('click', async () => {
-      if (!lastSubmittedRecord) return;
-      const tsv = recordToTsv(lastSubmittedRecord);
-      try {
-        await navigator.clipboard.writeText(tsv);
-        alert('Fila copiada. Ya puedes pegarla directamente en Excel o Google Sheets.');
-      } catch (_) {
-        prompt('Copia esta fila:', tsv);
-      }
+    /*
+     * El evento load del iframe NO demuestra que Sheets guardó
+     * el registro. Solo indica que el navegador cargó una respuesta.
+     */
+    iframe.addEventListener('load', function() {
+      if (!envioEnCurso) return;
+
+      envioEnCurso = false;
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Enviar registro y disponibilidad';
+
+      showInfo(
+        'El navegador terminó la solicitud. La confirmación definitiva debe comprobarse en Google Sheets.'
+      );
     });
 
-    document.getElementById('btnDownloadCsv').addEventListener('click', () => {
-      if (!lastSubmittedRecord) return;
-      const blob = new Blob(['\uFEFF' + recordToCsv(lastSubmittedRecord)], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'registro_palermo_worship.csv';
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+    /********************************************************
+     * COPIAR REGISTRO
+     ********************************************************/
 
-    document.getElementById('btnNewEntry').addEventListener('click', () => {
-      form.reset();
-      clearErrors();
-      confirmationBox.classList.remove('visible');
-      lastSubmittedRecord = null;
-      document.getElementById('nombre').focus();
-    });
+    document.getElementById('btnCopyRow')
+      .addEventListener('click', async function() {
+        if (!lastSubmittedRecord) return;
+
+        const tsv = recordToTsv(lastSubmittedRecord);
+
+        try {
+          await navigator.clipboard.writeText(tsv);
+          alert(
+            'Fila copiada. Puedes pegarla directamente en Excel o Google Sheets.'
+          );
+        } catch (error) {
+          prompt('Copia esta fila:', tsv);
+        }
+      });
+
+    /********************************************************
+     * DESCARGAR CSV
+     ********************************************************/
+
+    document.getElementById('btnDownloadCsv')
+      .addEventListener('click', function() {
+        if (!lastSubmittedRecord) return;
+
+        const blob = new Blob(
+          ['\uFEFF' + recordToCsv(lastSubmittedRecord)],
+          { type: 'text/csv;charset=utf-8;' }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+
+        a.href = url;
+        a.download = 'registro_palermo_worship.csv';
+        a.click();
+
+        URL.revokeObjectURL(url);
+      });
+
+    /********************************************************
+     * NUEVO REGISTRO
+     ********************************************************/
+
+    document.getElementById('btnNewEntry')
+      .addEventListener('click', function() {
+        if (envioEnCurso) {
+          alert('Espera a que termine el envío antes de iniciar otro registro.');
+          return;
+        }
+
+        form.reset();
+        clearErrors();
+
+        confirmationBox.classList.remove('visible');
+        lastSubmittedRecord = null;
+
+        document.getElementById('nombre').focus();
+      });
+
   </script>
 </body>
 </html>
