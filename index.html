@@ -19,11 +19,7 @@
       --success-green: #4ADE80;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background: radial-gradient(circle at top, #3B2418 0%, #1A110D 55%, #110A07 100%);
@@ -113,9 +109,7 @@
       color: var(--text-muted);
     }
 
-    .spiritual-note strong {
-      color: var(--accent-gold-light);
-    }
+    .spiritual-note strong { color: var(--accent-gold-light); }
 
     .verse {
       margin-top: 10px;
@@ -125,13 +119,8 @@
       text-align: center;
     }
 
-    form {
-      padding: 26px 28px 32px;
-    }
-
-    .field-group {
-      margin-bottom: 18px;
-    }
+    form { padding: 26px 28px 32px; }
+    .field-group { margin-bottom: 18px; }
 
     label {
       display: block;
@@ -141,10 +130,7 @@
       margin-bottom: 7px;
     }
 
-    .req {
-      color: var(--error-red);
-      margin-left: 2px;
-    }
+    .req { color: var(--error-red); margin-left: 2px; }
 
     input[type="text"],
     input[type="tel"],
@@ -159,25 +145,16 @@
       color: #FFFFFF;
       font-size: 15px;
       font-family: inherit;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    input::placeholder,
-    textarea::placeholder {
-      color: #8F7E6B;
-    }
-
-    input:focus,
-    textarea:focus {
+    input::placeholder, textarea::placeholder { color: #8F7E6B; }
+    input:focus, textarea:focus {
       outline: none;
       border-color: var(--accent-gold-light);
       box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.22);
     }
 
-    textarea {
-      min-height: 82px;
-      resize: vertical;
-    }
+    textarea { min-height: 82px; resize: vertical; }
 
     .grid-2 {
       display: grid;
@@ -186,16 +163,8 @@
     }
 
     @media (max-width: 580px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      form,
-      .hero {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
+      .grid-2 { grid-template-columns: 1fr; gap: 0; }
+      form, .hero { padding-left: 18px; padding-right: 18px; }
     }
 
     .error-msg {
@@ -218,18 +187,9 @@
       text-transform: uppercase;
       letter-spacing: 0.9px;
       cursor: pointer;
-      transition: transform 0.15s ease, filter 0.2s ease;
     }
 
-    .btn-submit:hover:not(:disabled) {
-      filter: brightness(1.06);
-      transform: translateY(-1px);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
+    .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; }
 
     .status-banner {
       margin-top: 14px;
@@ -255,28 +215,11 @@
       padding: 22px 20px;
     }
 
-    .confirmation-box.visible {
-      display: block;
-    }
+    .confirmation-box.visible { display: block; }
+    .confirmation-box h2 { color: var(--success-green); font-size: 19px; margin-bottom: 8px; }
+    .confirmation-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 14px; }
 
-    .confirmation-box h2 {
-      color: var(--success-green);
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .confirmation-box p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .actions-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
+    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 
     .btn-secondary {
       padding: 10px 15px;
@@ -289,10 +232,6 @@
       cursor: pointer;
     }
 
-    .btn-secondary:hover {
-      background-color: #3B2418;
-    }
-
     .footer {
       background-color: var(--bg-dark);
       padding: 16px 20px;
@@ -302,9 +241,7 @@
       color: var(--text-muted);
     }
 
-    .footer strong {
-      color: var(--accent-gold-light);
-    }
+    .footer strong { color: var(--accent-gold-light); }
   </style>
 </head>
 <body>
@@ -409,7 +346,7 @@
   </div>
 
   <script>
-    const APPS_SCRIPT_EXEC_URL = 'https://script.google.com/macros/s/AKfycbzsZdfkd-yUEvNnfu9owDnD5yo9mqG0ccCL4mYDNRCtyfoNlnLqbHtjHIpCCw1LkKaAmA/exec';
+    const APPS_SCRIPT_EXEC_URL = 'PEGA_AQUI_LA_NUEVA_URL_EXEC_DE_REGISTROS_V2';
 
     const form = document.getElementById('registroForm');
     const btnSubmit = document.getElementById('btnSubmit');
@@ -447,20 +384,9 @@
       const ciudad = document.getElementById('ciudad_residencia').value.trim();
       const integrantes = document.getElementById('numero_integrantes').value.trim();
 
-      if (!nombre) {
-        setError('nombre', 'Por favor ingresa tu nombre.');
-        valid = false;
-      }
-
-      if (!telefono) {
-        setError('telefono', 'Por favor ingresa un número de teléfono.');
-        valid = false;
-      }
-
-      if (!correo || !isValidEmail(correo)) {
-        setError('correo', 'Ingresa un correo electrónico válido.');
-        valid = false;
-      }
+      if (!nombre) { setError('nombre', 'Por favor ingresa tu nombre.'); valid = false; }
+      if (!telefono) { setError('telefono', 'Por favor ingresa un número de teléfono.'); valid = false; }
+      if (!correo || !isValidEmail(correo)) { setError('correo', 'Ingresa un correo electrónico válido.'); valid = false; }
 
       if (!confirmCorreo) {
         setError('confirmacion_correo', 'Por favor confirma tu correo electrónico.');
@@ -475,15 +401,8 @@
         valid = false;
       }
 
-      if (!agrupacion) {
-        setError('agrupacion_o_cantante', 'Indica el nombre de la agrupación o cantante.');
-        valid = false;
-      }
-
-      if (!ciudad) {
-        setError('ciudad_residencia', 'Indica tu ciudad de residencia.');
-        valid = false;
-      }
+      if (!agrupacion) { setError('agrupacion_o_cantante', 'Indica el nombre de la agrupación o cantante.'); valid = false; }
+      if (!ciudad) { setError('ciudad_residencia', 'Indica tu ciudad de residencia.'); valid = false; }
 
       if (integrantes && (Number(integrantes) < 1 || !Number.isInteger(Number(integrantes)))) {
         setError('numero_integrantes', 'Ingresa un número entero válido (ej. 1, 3, 5).');
@@ -499,55 +418,34 @@
     }
 
     async function sendToGoogleSheets(payload) {
+      const params = new URLSearchParams();
+      Object.entries(payload).forEach(([k, v]) => params.append(k, v || ''));
       await fetch(APPS_SCRIPT_EXEC_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
+        body: params
       });
-      return { sent: true };
     }
 
     function recordToTsv(rec) {
       const cols = [
-        rec.fecha_registro,
-        rec.nombre,
-        rec.telefono,
-        rec.correo,
-        rec.confirmacion_correo,
-        rec.numero_telefonico,
-        rec.agrupacion_o_cantante,
-        rec.ciudad_residencia,
-        rec.numero_integrantes,
-        rec.fechas_disponibles
+        rec.fecha_registro, rec.nombre, rec.telefono, rec.correo,
+        rec.confirmacion_correo, rec.numero_telefonico, rec.agrupacion_o_cantante,
+        rec.ciudad_residencia, rec.numero_integrantes, rec.fechas_disponibles
       ];
       return cols.map((v) => String(v || '').replace(/\t|\r?\n/g, ' ')).join('\t');
     }
 
     function recordToCsv(rec) {
       const headers = [
-        'Fecha de registro',
-        'Nombre',
-        'Teléfono',
-        'Correo electrónico',
-        'Confirmación del correo',
-        'Número telefónico',
-        'Nombre de la agrupación o cantante',
-        'Ciudad de residencia',
-        'Número de integrantes (si aplica)',
-        'Fechas disponibles'
+        'Fecha', 'Nombre', 'Teléfono', 'Correo', 'Confirmación correo',
+        'Número telefónico', 'Agrupación o cantante', 'Ciudad de residencia',
+        'Número de integrantes', 'Fechas disponibles'
       ];
       const vals = [
-        rec.fecha_registro,
-        rec.nombre,
-        rec.telefono,
-        rec.correo,
-        rec.confirmacion_correo,
-        rec.numero_telefonico,
-        rec.agrupacion_o_cantante,
-        rec.ciudad_residencia,
-        rec.numero_integrantes,
-        rec.fechas_disponibles
+        rec.fecha_registro, rec.nombre, rec.telefono, rec.correo,
+        rec.confirmacion_correo, rec.numero_telefonico, rec.agrupacion_o_cantante,
+        rec.ciudad_residencia, rec.numero_integrantes, rec.fechas_disponibles
       ];
       const esc = (s) => `"${String(s || '').replace(/"/g, '""')}"`;
       return headers.map(esc).join(',') + '\n' + vals.map(esc).join(',');
